@@ -1,8 +1,7 @@
 import numpy as np
 from opendbc.car import CanBusBase
 from opendbc.car.crc import CRC16_XMODEM
-from opendbc.car.hyundai.values import HyundaiFlags
-from opendbc.sunnypilot.car.hyundai.lead_data_ext import CanFdLeadData
+from opendbc.car.hyundai.values import HyundaiFlags, CAR
 
 
 class CanBus(CanBusBase):
@@ -16,7 +15,7 @@ class CanBus(CanBusBase):
     # have a different harness than the LFA steering variants in order to split
     # a different bus, since the steering is done by different ECUs.
     self._a, self._e = 1, 0
-    if lka_steering:
+    if lka_steering or (CP is not None and CP.carFingerprint == CAR.HYUNDAI_IONIQ_5):
       self._a, self._e = 0, 1
 
     self._a += self.offset
