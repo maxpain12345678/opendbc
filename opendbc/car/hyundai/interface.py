@@ -73,7 +73,7 @@ class CarInterface(CarInterfaceBase):
         cfgs.insert(0, get_safety_config(structs.CarParams.SafetyModel.noOutput))
       ret.safetyConfigs = cfgs
 
-      if ret.flags & HyundaiFlags.CANFD_LKA_STEER_MSG:
+      if ret.flags & HyundaiFlags.CANFD_LKA_STEER_MSG or ret.carFingerprint == CAR.HYUNDAI_IONIQ_5:
         ret.safetyConfigs[-1].safetyParam |= HyundaiSafetyFlags.CANFD_LKA_STEER_MSG.value
         if ret.flags & HyundaiFlags.CANFD_LKA_STEER_MSG_ALT:
           ret.safetyConfigs[-1].safetyParam |= HyundaiSafetyFlags.CANFD_LKA_STEER_MSG_ALT.value
