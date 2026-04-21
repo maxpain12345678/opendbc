@@ -19,7 +19,7 @@ class CanBus(CanBusBase):
       self._a, self._e = 0, 1
     
     if CP is not None and CP.carFingerprint == CAR.HYUNDAI_IONIQ_5:
-      self._a, self._e = 1, 1
+      self._a, self._e = 0, 1
 
     self._a += self.offset
     self._e += self.offset
