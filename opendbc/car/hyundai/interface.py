@@ -59,7 +59,7 @@ class CarInterface(CarInterfaceBase):
           ret.flags |= HyundaiFlags.CANFD_LKA_STEER_MSG_ALT.value
       else:
         # no LKA steering
-        if 0x1cf not in fingerprint[CAN.ECAN]:
+        if 0x1cf not in fingerprint[CAN.ECAN] and ret.carFingerprint != CAR.HYUNDAI_IONIQ_5:
           ret.flags |= HyundaiFlags.CANFD_ALT_BUTTONS.value
         if not ret.flags & HyundaiFlags.CANFD_RADAR_SCC:
           ret.flags |= HyundaiFlags.CANFD_CAMERA_SCC.value
