@@ -79,7 +79,7 @@ def create_buttons(packer, CP, CAN, cnt, btn):
     "CRUISE_BUTTONS": btn,
   }
 
-  bus = CAN.ECAN if CP.flags & HyundaiFlags.CANFD_LKA_STEER_MSG else CAN.CAM
+  bus = CAN.ECAN if (CP.flags & HyundaiFlags.CANFD_LKA_STEER_MSG or CP.carFingerprint == CAR.HYUNDAI_IONIQ_5) else CAN.CAM
   return packer.make_can_msg("CRUISE_BUTTONS", bus, values)
 
 
